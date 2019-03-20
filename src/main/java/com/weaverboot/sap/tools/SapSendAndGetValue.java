@@ -84,7 +84,7 @@ public class SapSendAndGetValue extends SapConnect {
 
             //将当前传入的值赋予各个参数
 
-            if(BaseTools.isNullString((String) this.getMethodName(fieldName,searchCondition).invoke(searchCondition))) {
+            if(BaseTools.notNullString((String) this.getMethodName(fieldName,searchCondition).invoke(searchCondition))) {
 
                 function.getImportParameterList().setValue(fieldName, this.getMethodName(fieldName, searchCondition).invoke(searchCondition));
 
@@ -125,7 +125,7 @@ public class SapSendAndGetValue extends SapConnect {
 
         JCoDestination jCoDestination = this.connectSap();
 
-        if(!BaseTools.isNullList(sendObjectList)){
+        if(!BaseTools.notNullList(sendObjectList)){
 
             throw new RuntimeException("传入的列表为空");
 
@@ -153,7 +153,7 @@ public class SapSendAndGetValue extends SapConnect {
             for (String fieldName : fieldNames
             ) {
 
-                if(BaseTools.isNullString((String) this.getMethodName(fieldName, sendObject).invoke(sendObject))) {
+                if(BaseTools.notNullString((String) this.getMethodName(fieldName, sendObject).invoke(sendObject))) {
 
                     jCoTable.setValue(fieldName, this.getMethodName(fieldName, sendObject).invoke(sendObject));
 
@@ -182,7 +182,7 @@ public class SapSendAndGetValue extends SapConnect {
                 for (String fieldName : fieldNames
                 ) {
 
-                    if(BaseTools.isNullString((String) this.getMethodName(fieldName, sendObject).invoke(sendObject))) {
+                    if(BaseTools.notNullString((String) this.getMethodName(fieldName, sendObject).invoke(sendObject))) {
 
                         this.writeLog(fieldName + " : " + this.getMethodName(fieldName, sendObject).invoke(sendObject));
 
@@ -267,7 +267,7 @@ public class SapSendAndGetValue extends SapConnect {
 
         JCoDestination jCoDestination = this.connectSap();
 
-        if(!BaseTools.isNullList(sendObjectList)){
+        if(!BaseTools.notNullList(sendObjectList)){
 
             throw new RuntimeException("传入的列表为空");
 
@@ -298,7 +298,7 @@ public class SapSendAndGetValue extends SapConnect {
                 for (String fieldName : fieldNames
                 ) {
 
-                    if (BaseTools.isNullString((String) this.getMethodName(fieldName, sendObject).invoke(sendObject))) {
+                    if (BaseTools.notNullString((String) this.getMethodName(fieldName, sendObject).invoke(sendObject))) {
 
                         this.writeLog(fieldName + " : " + this.getMethodName(fieldName, sendObject).invoke(sendObject));
 
@@ -481,7 +481,7 @@ public class SapSendAndGetValue extends SapConnect {
 
             //将当前传入的值赋予各个参数
 
-            if(BaseTools.isNullString(value)) {
+            if(BaseTools.notNullString(value)) {
 
                 function.getImportParameterList().setValue(fieldName, value);
 
@@ -554,7 +554,7 @@ public class SapSendAndGetValue extends SapConnect {
         for (String fieldName : fieldNames
              ) {
 
-            if(!BaseTools.isNullString((String) this.getMethodName(fieldName, sendObject).invoke(sendObject))) {
+            if(!BaseTools.notNullString((String) this.getMethodName(fieldName, sendObject).invoke(sendObject))) {
 
                 jCoTable.setValue(fieldName, this.getMethodName(fieldName, sendObject).invoke(sendObject));
 
@@ -590,7 +590,7 @@ public class SapSendAndGetValue extends SapConnect {
 
         boolean status = false;
 
-        if(!BaseTools.isNullList(sendObjectList)){
+        if(!BaseTools.notNullList(sendObjectList)){
 
             throw new RuntimeException("传入的列表为空");
 
@@ -619,7 +619,7 @@ public class SapSendAndGetValue extends SapConnect {
             for (String fieldName : fieldNames
             ) {
 
-                if(BaseTools.isNullString((String) this.getMethodName(fieldName, sendObject).invoke(sendObject))) {
+                if(BaseTools.notNullString((String) this.getMethodName(fieldName, sendObject).invoke(sendObject))) {
 
                     jCoTable.setValue(fieldName, this.getMethodName(fieldName, sendObject).invoke(sendObject));
 
