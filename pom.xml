@@ -5,7 +5,7 @@
     <parent>
         <artifactId>WeaverBoot</artifactId>
         <groupId>com.weaver</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0.1</version>
         <relativePath>../WeaverBoot/pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -32,7 +32,7 @@
         <dependency>
             <groupId>com.weaver</groupId>
             <artifactId>WeaverBoot</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>1.0.1</version>
         </dependency>
     </dependencies>
 

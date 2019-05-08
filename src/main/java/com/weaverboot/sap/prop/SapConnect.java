@@ -14,7 +14,7 @@ public class SapConnect extends BaseBean {
     protected static String ABAP_AS_POOLED = "ABAP_AS_WITH_POOL";
 
     /**
-     * 创建SAP接口属性文件。
+     * 创建SAP接口属性文件
      * @param name  ABAP管道名称
      * @param suffix    属性文件后缀
      * @param properties    属性文件内容

@@ -11,14 +11,18 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.*;
 
-
-public class SapSendAndGetValue extends SapConnect {
+/**
+ *
+ * SAP操作类
+ *
+ */
+public class SapHandle extends SapConnect {
 
     public SapProperties sapProperties;
 
     private BaseBean baseBean = new BaseBean();
 
-    public SapSendAndGetValue(SapProperties newSapProperites) throws Exception {
+    public SapHandle(SapProperties newSapProperites) throws Exception {
 
         this.sapProperties = newSapProperites;
 
@@ -39,6 +43,62 @@ public class SapSendAndGetValue extends SapConnect {
         properties.setProperty(DestinationDataProvider.JCO_POOL_CAPACITY, sapProperties.getPOOL_MAX_NUM());
 
         properties.setProperty(DestinationDataProvider.JCO_PEAK_LIMIT, sapProperties.getTHREAD_MAX_NUM());
+
+        createDataFile(ABAP_AS_POOLED, "jcoDestination", properties);
+
+    }
+
+    public SapHandle() throws Exception {
+
+        String propertiesName = "DefaultPropertiesName";
+
+        Properties properties = new Properties();
+
+        this.sapProperties = new SapProperties();
+
+        String SAP_ADDRESS = baseBean.getPropValue(propertiesName,"SAP_ADDRESS");
+
+
+
+        this.sapProperties.setSAP_ADDRESS(baseBean.getPropValue(propertiesName,"SAP_ADDRESS"));
+
+        properties.setProperty(DestinationDataProvider.JCO_SYSNR,  baseBean.getPropValue(propertiesName,"CLIENT_NUM"));
+
+        properties.setProperty(DestinationDataProvider.JCO_CLIENT, baseBean.getPropValue(propertiesName,"SAP_COMPANY"));
+
+        properties.setProperty(DestinationDataProvider.JCO_USER,   baseBean.getPropValue(propertiesName,"USER"));
+
+        properties.setProperty(DestinationDataProvider.JCO_PASSWD, baseBean.getPropValue(propertiesName,"PASSWORD"));
+
+        properties.setProperty(DestinationDataProvider.JCO_LANG,   baseBean.getPropValue(propertiesName,"SYSTEM_LANGUAGE"));
+
+        properties.setProperty(DestinationDataProvider.JCO_POOL_CAPACITY, baseBean.getPropValue(propertiesName,"POOL_MAX_NUM"));
+
+        properties.setProperty(DestinationDataProvider.JCO_PEAK_LIMIT, baseBean.getPropValue(propertiesName,"THREAD_MAX_NUM"));
+
+        createDataFile(ABAP_AS_POOLED, "jcoDestination", properties);
+
+    }
+
+    public SapHandle(String propertiesName) throws Exception {
+
+        Properties properties = new Properties();
+
+        properties.setProperty(DestinationDataProvider.JCO_ASHOST, baseBean.getPropValue(propertiesName,"SAP_ADDRESS"));
+
+        properties.setProperty(DestinationDataProvider.JCO_SYSNR,  baseBean.getPropValue(propertiesName,"CLIENT_NUM"));
+
+        properties.setProperty(DestinationDataProvider.JCO_CLIENT, baseBean.getPropValue(propertiesName,"SAP_COMPANY"));
+
+        properties.setProperty(DestinationDataProvider.JCO_USER,   baseBean.getPropValue(propertiesName,"USER"));
+
+        properties.setProperty(DestinationDataProvider.JCO_PASSWD, baseBean.getPropValue(propertiesName,"PASSWORD"));
+
+        properties.setProperty(DestinationDataProvider.JCO_LANG,   baseBean.getPropValue(propertiesName,"SYSTEM_LANGUAGE"));
+
+        properties.setProperty(DestinationDataProvider.JCO_POOL_CAPACITY, baseBean.getPropValue(propertiesName,"POOL_MAX_NUM"));
+
+        properties.setProperty(DestinationDataProvider.JCO_PEAK_LIMIT, baseBean.getPropValue(propertiesName,"THREAD_MAX_NUM"));
 
         createDataFile(ABAP_AS_POOLED, "jcoDestination", properties);
 
